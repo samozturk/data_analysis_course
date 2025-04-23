@@ -178,41 +178,8 @@ plt.tight_layout() # Adjust layout
 plt.show() # Display the plot
 
 
-# --- Plot 5: Distribution of GDP Across All Countries (Most Recent Year) ---
 
-# Find the most recent year in the entire dataset
-latest_overall_year = df_long['Year'].max()
-
-# Filter data for the most recent year
-df_latest_year = df_long[df_long['Year'] == latest_overall_year].copy()
-
-# Drop countries with missing GDP for that year
-df_latest_year.dropna(subset=['GDP (current US$)'], inplace=True)
-
-# Create the histogram
-plt.figure(figsize=(12, 6))
-# Using a logarithmic scale for the x-axis due to large GDP range
-plt.hist(df_latest_year['GDP (current US$)'], bins=30, color='purple', log=False) # Plot counts on linear scale first
-plt.title(f'Distribution of GDP (current US$) Across Countries in {latest_overall_year}')
-plt.xlabel('GDP (current US$)')
-plt.ylabel('Number of Countries')
-plt.grid(axis='y', linestyle='--')
-
-# Optional: Try with log scale on x-axis if distribution is heavily skewed
-# plt.figure(figsize=(12, 6))
-# plt.hist(df_latest_year['GDP (current US$)'], bins=30, color='purple', log=False) # Keep y linear
-# plt.xscale('log') # Set x-axis to logarithmic scale
-# plt.title(f'Distribution of GDP (current US$) Across Countries in {latest_overall_year} (Log Scale)')
-# plt.xlabel('GDP (current US$) (Log Scale)')
-# plt.ylabel('Number of Countries')
-# plt.grid(axis='y', linestyle='--')
-
-
-plt.tight_layout() # Adjust layout
-plt.show() # Display the plot
-
-
-# --- Plot 6: Box Plot of GDP Growth Rates for Selected Countries ---
+# --- Plot 5: Box Plot of GDP Growth Rates for Selected Countries ---
 
 # Prepare data for box plot - need growth rates per country
 # Use df_compare which already has 'GDP Growth Rate (%)' calculated
